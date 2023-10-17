@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment                                          # 1
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 2                                             # 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate                                   # 3
+    rollingUpdate: 
+      maxUnavailable: 1                                   # 4
+      maxSurge: 1                                         # 5
+  template:
+    metadata:
+      labels:
+        app: frontend                                  # 6
+        app.kubernetes.io/name: frontend
+    spec:
+      containers:
+        - image: amitbb16/frontend:1.0.4
+          imagePullPolicy: IfNotPresent                         # 7
+          name: frontend
+          ports:
+            - containerPort: 80
