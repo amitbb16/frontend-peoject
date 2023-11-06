@@ -12,6 +12,16 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
+- stage: npmbuild
+  displayName: Create build folder using npm
+  jobs:
+    - job: npmbuild
+      displayName: Create build folder using npm
+      pool:
+        vmimage: ubuntu-latest
+      steps:
+      - script: npm install
+      - script: npm run build
 - stage: Build
   displayName: Build image
   jobs:
