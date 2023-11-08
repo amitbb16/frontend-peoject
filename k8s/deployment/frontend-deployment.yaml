@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: frontend
-  replicas: 2                                             # 2
+  replicas: 1                                             # 2
   minReadySeconds: 15
   strategy:
     type: RollingUpdate                                   # 3
@@ -19,20 +19,20 @@ spec:
     metadata:
       labels:
         app: frontend                                  # 6
-    spec:
-      volumes:
-        - name: datastore
-          persistentVolumeClaim:
-            claimName: frontend-fast-replicated
+    # spec:
+    #   volumes:
+    #     - name: datastore
+    #       persistentVolumeClaim:
+    #         claimName: frontend-fast-replicated
       containers:
         - image: amitbb16/frontendproject:13
           imagePullPolicy: IfNotPresent                         # 7
           name: frontend
           ports:
             - containerPort: 80
-          volumeMounts:
-            - mountPath: /var/lib/sql
-              name: datastore
+          # volumeMounts:
+          #   - mountPath: /var/lib/sql
+          #     name: datastore
           # env:
           #   - name: DB_USER_NAME
           #     valueFrom:
