@@ -34,7 +34,7 @@ stages:
       inputs:
         command: buildAndPush
         containerRegistry: gcr-registry
-        repository: frontendProject
+        repository: vast-ethos-403409/frontendProject
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
