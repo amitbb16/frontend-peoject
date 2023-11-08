@@ -15,29 +15,29 @@ pool:
   vmimage: ubuntu-latest
 
 stages:
-- stage: npmbuild
-  displayName: Create build folder using npm
-  jobs:
-    - job: npmbuild
-      displayName: Create build folder using npm
-      steps:
-      - script: npm install
-      - script: npm run build
-- stage: Build
-  displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: buildAndPush
-        containerRegistry: gcr-registry
-        repository: vast-ethos-403409/frontendProject
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+# - stage: npmbuild
+#   displayName: Create build folder using npm
+#   jobs:
+#     - job: npmbuild
+#       displayName: Create build folder using npm
+#       steps:
+#       - script: npm install
+#       - script: npm run build
+# - stage: Build
+#   displayName: Build image
+#   jobs:
+#   - job: Build
+#     displayName: Build
+#     steps:
+#     - task: Docker@2
+#       displayName: Build an image
+#       inputs:
+#         command: buildAndPush
+#         containerRegistry: gcr-registry
+#         repository: vast-ethos-403409/frontendProject
+#         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+#         tags: |
+#           $(tag)
 - stage: Deploy
   displayName: Deploy to GKE Cluster
   jobs:
@@ -46,7 +46,8 @@ stages:
     steps:
     - task: Kubernetes@1
       inputs:
-        connectionType: 'gke-dev-clusters'
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceEndpoint: 'gke-dev-clusters'
         namespace: dev
         command: apply
         arguments: -f /k8s/deployment/

@@ -25,7 +25,7 @@ spec:
           persistentVolumeClaim:
             claimName: frontend-fast-replicated
       containers:
-        - image: amitbb16/frontend:latest
+        - image: amitbb16/frontendproject:13
           imagePullPolicy: IfNotPresent                         # 7
           name: frontend
           ports:
