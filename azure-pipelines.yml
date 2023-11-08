@@ -38,3 +38,15 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+- stage: Deploy
+  displayName: Deploy to GKE Cluster
+  jobs:
+  - job: Deploy
+    displayName: Deploy to GKE Cluster
+    steps:
+    - task: Kubernetes@1
+      inputs:
+        connectionType: 'gke-dev-clusters'
+        namespace: dev
+        command: apply
+        arguments: -f /k8s/deployment/
