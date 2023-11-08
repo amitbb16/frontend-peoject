@@ -3,7 +3,7 @@ kind: Service              # 1
 metadata:
   name: frontend-lb
 spec: 
-  type: Loadbalancer
+  type: LoadBalancer
   ports:
   - port: 80               # 3
     protocol: TCP          # 4
