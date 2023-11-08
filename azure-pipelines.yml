@@ -50,4 +50,4 @@ stages:
         kubernetesServiceEndpoint: 'gke-dev-clusters'
         namespace: dev
         command: apply
-        arguments: -f /k8s/deployment/
+        # arguments: -f  /k8s/deployment/
