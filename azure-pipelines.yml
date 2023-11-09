@@ -55,7 +55,6 @@ stages:
         namespace: dev
         command: set
         arguments: image deployment/frontend frontend=amitbb16/frontendproject:$(tag)
-    steps:
     - task: Kubernetes@1
       displayName: 'kubectl  apply'
       inputs:
@@ -63,7 +62,6 @@ stages:
         namespace: dev
         command: apply
         configuration: https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.yaml
-    steps:
     - task: Kubernetes@1
       displayName: 'kubectl  apply'
       inputs:
@@ -71,7 +69,6 @@ stages:
         namespace: dev
         command: apply
         configuration: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
-    steps:
     - task: Kubernetes@1
       displayName: 'kubectl  apply'
       inputs:
@@ -79,7 +76,6 @@ stages:
         namespace: dev
         command: apply
         configuration: k8s/ingress
-    steps:
     - task: Kubernetes@1
       displayName: 'kubectl  apply'
       inputs:
