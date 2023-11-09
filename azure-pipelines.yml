@@ -15,7 +15,7 @@ pool:
   vmimage: ubuntu-latest
 
 stages:
-- stage: npmbuild
+- stage: Build
   displayName: Create build folder using npm
   jobs:
     - job: npmbuild
@@ -23,8 +23,6 @@ stages:
       steps:
       - script: npm install
       - script: npm run build
-- stage: Build
-  displayName: Build image
   jobs:
   - job: Build
     displayName: Build
@@ -58,4 +56,4 @@ stages:
         namespace: dev
         command: set
         arguments: image deployment/frontend frontend=amitbb16/frontendproject:$(tag)
-
+    
