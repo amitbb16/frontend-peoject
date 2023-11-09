@@ -26,15 +26,15 @@ stages:
     - job: Build
       displayName: Build
       steps:
-     - task: Docker@2
-       displayName: Build an image
-        inputs:
-         command: buildAndPush
-         containerRegistry: docker.io
-          repository: amitbb16/frontendProject
-         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-         tags: |
-           $(tag)
+      - task: Docker@2
+        displayName: Build an image
+          inputs:
+            command: buildAndPush
+            containerRegistry: docker.io
+            repository: amitbb16/frontendProject
+            dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+            tags: |
+              $(tag)
 - stage: Deploy
   displayName: Deploy to GKE Cluster
   jobs:
