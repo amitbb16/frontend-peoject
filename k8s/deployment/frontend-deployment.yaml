@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: frontend
-  replicas: 1                                             # 2
+  replicas: 2                                             # 2
   minReadySeconds: 15
   strategy:
     type: RollingUpdate                                   # 3
@@ -19,7 +19,7 @@ spec:
     metadata:
       labels:
         app: frontend                                  # 6
-    # spec:
+    spec:
     #   volumes:
     #     - name: datastore
     #       persistentVolumeClaim:
