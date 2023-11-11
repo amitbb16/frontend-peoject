@@ -10,6 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  System.debug: true
 
 pool:
   vmimage: ubuntu-latest
