@@ -56,17 +56,17 @@ spec:
           #       configMapKeyRef:
           #         name: db-configs
           #         key: database_name
-         livenessProbe:
-            initialDelaySeconds: 1
-            periodSeconds: 2
-            timeoutSeconds: 1
-            successThreshold: 1
-            failureThreshold: 1
-            httpGet:
-              host:
-              scheme: HTTP
-              path: /
-              httpHeaders:
-                - name: Host
-                  value: 34.29.234.122.sslip.io
-              port: 80
+        #  livenessProbe:
+        #     initialDelaySeconds: 1
+        #     periodSeconds: 2
+        #     timeoutSeconds: 1
+        #     successThreshold: 1
+        #     failureThreshold: 1
+        #     httpGet:
+        #       host:
+        #       scheme: HTTP
+        #       path: /
+        #       httpHeaders:
+        #         - name: Host
+        #           value: 34.29.234.122.sslip.io
+        #       port: 80
